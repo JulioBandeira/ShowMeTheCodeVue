@@ -10,5 +10,7 @@ namespace Modelo.Services.Interfaces
     public interface IPrecoLigacaoServices
     {
         List<PrecoLigacao> ListaPrecosLigacoes();
+
+        PrecoLigacao BuscarByOrigemDestino(string origem, string destino);
     }
 }

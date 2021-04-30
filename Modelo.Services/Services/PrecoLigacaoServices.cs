@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Modelo.Services.Services
 {
-    public class ConsumoServices : IPrecoLigacaoServices
+    public class PrecoLigacaoServices : IPrecoLigacaoServices
     {
+       
         public List<PrecoLigacao> ListaPrecosLigacoes()
         {
 
@@ -59,6 +60,11 @@ namespace Modelo.Services.Services
             });
 
             return listaPrecoLigacao;
+        }
+
+        public PrecoLigacao BuscarByOrigemDestino(string origem, string destino)
+        {
+            return ListaPrecosLigacoes().FirstOrDefault(x=>x.Origem == origem && x.Destino == destino);
         }
     }
 }

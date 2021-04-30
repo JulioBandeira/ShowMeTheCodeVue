@@ -1,5 +1,6 @@
 using Modelo.Domain.Entities;
 using Modelo.Domain.Interfaces;
+using Modelo.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
 
@@ -118,6 +119,17 @@ namespace FalaMais.Teste
             var resultado = consumoIsFalamais.IsFalaMaisExcedeuConsumo();
 
             Assert.AreEqual(resultado, resultadoEsperado);
+        }
+
+        [Test]
+        public void ObterValorPeloCodigo()
+        {
+            var precoLigacao = new PrecoLigacao();
+
+            Mock<IPrecoLigacaoServices> mock = new Mock<IPrecoLigacaoServices>();
+            mock.Setup(m => m.BuscarByOrigemDestino("","")).Returns(precoLigacao);
+
+            Assert.AreEqual(true, true);
         }
     }
 }

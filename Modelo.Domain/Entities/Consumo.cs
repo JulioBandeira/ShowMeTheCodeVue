@@ -16,13 +16,26 @@ namespace Modelo.Domain.Entities
 
         public EnumPlanoFaleMais PlanoFaleMaisEnum { get; set; }
 
-        public void CalcularPlano(PrecoLigacao precoLigacao)
+        public bool IsFalaMaisExcedeuConsumo(PrecoLigacao precoLigacao)
         {
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo.Minute > 30 && IsFaleMais == false)
-            {
-                var calculo = ObjPrecoLigacao.Valor * Tempo.Minute;
-            }
-                throw new NotImplementedException();
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo.Minute > 30 && IsFaleMais == true)
+                return true;
+
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo.Minute > 60 && IsFaleMais == true)
+                return true;
+
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo.Minute > 120 && IsFaleMais == true)
+                return true;
+
+            return false;
+        }
+
+        public decimal CalcularConsumo()
+        {
+            if (IsFalaMaisExcedeuConsumo(ObjPrecoLigacao))
+                return Tempo.Minute + (ObjPrecoLigacao.Valor * 0.1m);
+
+            return Tempo.Minute + ObjPrecoLigacao.Valor;
         }
     }
 }

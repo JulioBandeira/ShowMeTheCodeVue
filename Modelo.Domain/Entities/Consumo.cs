@@ -12,19 +12,19 @@ namespace Modelo.Domain.Entities
 
         public bool IsFaleMais { get; set; }
 
-        public DateTime Tempo { get; set; }
+        public int Tempo { get; set; }
 
         public EnumPlanoFaleMais PlanoFaleMaisEnum { get; set; }
 
-        public bool IsFalaMaisExcedeuConsumo(PrecoLigacao precoLigacao)
+        public bool IsFalaMaisExcedeuConsumo()
         {
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo.Minute > 30 && IsFaleMais == true)
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo > 30 && IsFaleMais == true)
                 return true;
 
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo.Minute > 60 && IsFaleMais == true)
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo > 60 && IsFaleMais == true)
                 return true;
 
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo.Minute > 120 && IsFaleMais == true)
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo > 120 && IsFaleMais == true)
                 return true;
 
             return false;
@@ -32,10 +32,10 @@ namespace Modelo.Domain.Entities
 
         public decimal CalcularConsumo()
         {
-            if (IsFalaMaisExcedeuConsumo(ObjPrecoLigacao))
-                return Tempo.Minute + (ObjPrecoLigacao.Valor * 0.1m);
+            if (IsFalaMaisExcedeuConsumo())
+                return Tempo + (ObjPrecoLigacao.Valor * 0.1m);
 
-            return Tempo.Minute + ObjPrecoLigacao.Valor;
+            return Tempo + ObjPrecoLigacao.Valor;
         }
     }
 }

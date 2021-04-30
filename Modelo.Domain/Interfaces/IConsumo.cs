@@ -7,7 +7,7 @@ namespace Modelo.Domain.Interfaces
 {
     public interface IConsumo
     {
-        bool IsFalaMaisExcedeuConsumo(PrecoLigacao precoLigacao);
+        bool IsFalaMaisExcedeuConsumo();
 
         decimal CalcularConsumo();
     }

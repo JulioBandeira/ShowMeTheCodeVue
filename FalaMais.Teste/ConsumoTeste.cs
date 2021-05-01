@@ -123,6 +123,42 @@ namespace FalaMais.Teste
         }
 
         [Test]
+        public void ObterResultadoValorNaoExcedidoSemPlanoFaleMais()
+        {
+            // arrange
+            Consumo consumoIsFalaMais = new Consumo()
+            {
+                Tempo = 20,
+                IsFaleMais = true,
+                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.90m
+                },
+            };
+
+            Mock<IConsumo> mock = new Mock<IConsumo>();
+            mock.Setup(m => m.CalculoDoConsumo()).Returns(38.00m);
+
+            Consumo consumoIsFalamais = new Consumo()
+            {
+                Tempo = 10,
+                IsFaleMais = true,
+                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.90m
+                },
+            };
+
+            // act
+            var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();
+            var resultado = consumoIsFalamais.IsFalaMaisExcedeuConsumo();
+
+            Assert.AreEqual(resultado, resultadoEsperado, "Valor R$ 0,00");
+        }
+
+        [Test]
         public void ObterValorPeloCodigo()
         {
             var precoLigacao = new PrecoLigacao()

@@ -16,26 +16,61 @@ namespace Modelo.Domain.Entities
 
         public EnumPlanoFaleMais PlanoFaleMaisEnum { get; set; }
 
+        /// <summary>
+        /// Retorna o calculo do consumo sendo plano fale mais ou não.
+        /// </summary>
+        /// <returns></returns>
+        public decimal CalculoDoConsumo()
+        {
+            if (IsFaleMais)
+                return CalcularConsumoComFalaMais();
+
+            return CalcularConsumoSemFalaMais();
+        }
+
         public bool IsFalaMaisExcedeuConsumo()
         {
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo > 30 && IsFaleMais == true)
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo > 30)
+                return true;
+            else if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais30 && Tempo <= 30)
+                return false;
+
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo > 60)
+                return true;
+            else if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo <= 60)
+                return false;
+
+            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo > 120)
                 return true;
 
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais60 && Tempo > 60 && IsFaleMais == true)
-                return true;
-
-            if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo > 120 && IsFaleMais == true)
-                return true;
+            else if (PlanoFaleMaisEnum == EnumPlanoFaleMais.PlanoFalaMais120 && Tempo <= 120)
+                return false;
 
             return false;
         }
 
-        public decimal CalcularConsumo()
+        /// <summary>
+        /// Método para retornar o calculo do consumo do plano com fala mais
+        /// </summary>
+        /// <returns></returns>
+        public decimal CalcularConsumoComFalaMais()
         {
             if (IsFalaMaisExcedeuConsumo())
-                return Tempo + (ObjPrecoLigacao.Valor * 0.1m);
+                return Tempo + ObjPrecoLigacao.Valor;
 
-            return Tempo + ObjPrecoLigacao.Valor;
+            return 0.0m;
+        }
+
+        /// <summary>
+        /// Método para retornar o calculo do consumo do plano sem fala mais
+        /// </summary>
+        /// <returns></returns>
+        public decimal CalcularConsumoSemFalaMais()
+        {
+            if (IsFalaMaisExcedeuConsumo())
+                return (Tempo - Convert.ToInt32(PlanoFaleMaisEnum)) * (ObjPrecoLigacao.Valor * 0.1m);
+
+            return Tempo * ObjPrecoLigacao.Valor;
         }
     }
 }

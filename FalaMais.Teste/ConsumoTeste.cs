@@ -31,7 +31,8 @@ namespace FalaMais.Teste
             Mock<IConsumo> mock = new Mock<IConsumo>();
             mock.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
 
-            Consumo consumoIsExcedeu65 = new Consumo() {
+            Consumo consumoIsExcedeu65 = new Consumo()
+            {
                 Tempo = 65,
                 IsFaleMais = true,
                 PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
@@ -86,7 +87,7 @@ namespace FalaMais.Teste
         }
 
         [Test]
-        public void ObterResultadoNaoExcedido()
+        public void ObterResultadoValorNaoExcedidoPlanoFaleMais()
         {
             // arrange
             Consumo consumoIsFalaMais = new Consumo()
@@ -101,7 +102,7 @@ namespace FalaMais.Teste
             };
 
             Mock<IConsumo> mock = new Mock<IConsumo>();
-            mock.Setup(m => m.CalcularConsumo()).Returns(38.88m);
+            mock.Setup(m => m.CalculoDoConsumo()).Returns(00.00m);
 
             Consumo consumoIsFalamais = new Consumo()
             {
@@ -118,18 +119,26 @@ namespace FalaMais.Teste
             var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();
             var resultado = consumoIsFalamais.IsFalaMaisExcedeuConsumo();
 
-            Assert.AreEqual(resultado, resultadoEsperado);
+            Assert.AreEqual(resultado, resultadoEsperado, "Valor R$ 0,00");
         }
 
         [Test]
         public void ObterValorPeloCodigo()
         {
-            var precoLigacao = new PrecoLigacao();
+            var precoLigacao = new PrecoLigacao()
+            {
+                Origem = "011",
+                Destino = "016",
+                Valor = 190m
+            };
 
             Mock<IPrecoLigacaoServices> mock = new Mock<IPrecoLigacaoServices>();
-            mock.Setup(m => m.BuscarByOrigemDestino("","")).Returns(precoLigacao);
+            mock.Setup(m => m.BuscarByOrigemDestino("011", "116")).Returns(precoLigacao);
 
-            Assert.AreEqual(true, true);
+            decimal valorObtido = precoLigacao.Valor;
+            decimal valorEsperado = 190m;
+
+            Assert.AreEqual(valorObtido, valorEsperado);
         }
     }
 }

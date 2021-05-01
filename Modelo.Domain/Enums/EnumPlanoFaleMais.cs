@@ -6,8 +6,8 @@ namespace Modelo.Domain.Enums
 {
     public enum EnumPlanoFaleMais
     {
-        PlanoFalaMais30 = 1,
-        PlanoFalaMais60 = 2,
-        PlanoFalaMais120 = 3,
+        PlanoFalaMais30 = 30,
+        PlanoFalaMais60 = 60,
+        PlanoFalaMais120 = 120,
     }
 }

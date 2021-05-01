@@ -9,6 +9,10 @@ namespace Modelo.Domain.Interfaces
     {
         bool IsFalaMaisExcedeuConsumo();
 
-        decimal CalcularConsumo();
+        decimal CalculoDoConsumo();
+
+        decimal CalcularConsumoComFalaMais();
+
+        decimal CalcularConsumoSemFalaMais();
     }
 }

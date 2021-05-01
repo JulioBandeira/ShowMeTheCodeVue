@@ -2,7 +2,56 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center" id="app">
+    <h1 class="display-4">Calcula o Valor do Consumo</h1>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Plano Fala Mais?</label>
+
+            <select class="form-control" v-model="is_fala_mais">
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Origem</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option v-for="option in options" v-bind:value="option">
+                    {{ option }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Destino</label>
+            <select class="form-control" id="exampleFormControlSelect2">
+                <option v-for="option in options" v-bind:value="option">
+                    {{ option }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Tempo</label>
+            <input class="form-control" id="exampleFormControlTextarea1" v-model="tempo" rows="3">
+        </div>
+        <div v-if="is_fala_mais === '1'">
+            <h1 class="display-4">Com Fala Mais</h1>
+            <h1 class="display-4">O valor origem e destino: {{preco}}</h1>
+            <h1 class="display-4">Valor da Simulação: {{resultado}} {{is_fala_mais}}</h1>
+        </div>
+        <div v-if="is_fala_mais === '0'">
+            <h1 class="display-4">Sem Fala Mais</h1>
+            <h1 class="display-4">O valor origem e destino: {{preco}}</h1>
+            <h1 class="display-4">Valor da Simulação: {{resultado}} {{is_fala_mais}}</h1>
+        </div>
+
+
+
+    </form>
 </div>
+
+
+
+@section Scripts{
+
+    <script src="~/js/falamais.js"></script>
+}

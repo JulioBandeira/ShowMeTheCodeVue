@@ -24,7 +24,7 @@ namespace FalaMais.Aplicacao.Controllers
 
         public IActionResult Index()
         {
-            return Json(_iprecoLigacaoServices.ListaPrecosLigacoes());
+            return View();
         }
 
         public IActionResult Privacy()

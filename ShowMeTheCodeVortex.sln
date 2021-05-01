@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo.Domain", "Modelo.Dom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Testes", "5 - Testes", "{AF7EC6FB-C6F9-433D-9CCD-979DEA02F425}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalaMais.Teste", "FalaMais.Teste\FalaMais.Teste.csproj", "{D5908C09-66C6-45A9-A27E-036B15FD7016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FalaMais.Teste", "FalaMais.Teste\FalaMais.Teste.csproj", "{D5908C09-66C6-45A9-A27E-036B15FD7016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo.Services", "Modelo.Services\Modelo.Services.csproj", "{FBEDC97F-96D5-4AF4-B1E1-D912C671E87C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo.Services", "Modelo.Services\Modelo.Services.csproj", "{FBEDC97F-96D5-4AF4-B1E1-D912C671E87C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

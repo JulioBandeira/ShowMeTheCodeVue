@@ -87,7 +87,7 @@ namespace FalaMais.Teste
         }
 
         [Test]
-        public void ObterResultadoValorNaoExcedidoPlanoFaleMais()
+        public void ObterResultadoValorNaoExcedidoComPlanoFaleMais()
         {
             // arrange
             Consumo consumoIsFalaMais = new Consumo()
@@ -116,20 +116,20 @@ namespace FalaMais.Teste
             };
 
             // act
-            var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();
-            var resultado = consumoIsFalamais.IsFalaMaisExcedeuConsumo();
+            var resultadoEsperado = mock.Object.CalculoDoConsumo();
+            var resultado = consumoIsFalamais.CalculoDoConsumo();
 
-            Assert.AreEqual(resultado, resultadoEsperado, "Valor R$ 0,00");
+            Assert.AreEqual(resultado, resultadoEsperado);
         }
 
         [Test]
         public void ObterResultadoValorNaoExcedidoSemPlanoFaleMais()
         {
             // arrange
-            Consumo consumoIsFalaMais = new Consumo()
+            Consumo consumoSemFalaMais = new Consumo()
             {
                 Tempo = 20,
-                IsFaleMais = true,
+                IsFaleMais = false,
                 PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
                 ObjPrecoLigacao = new PrecoLigacao()
                 {
@@ -140,22 +140,14 @@ namespace FalaMais.Teste
             Mock<IConsumo> mock = new Mock<IConsumo>();
             mock.Setup(m => m.CalculoDoConsumo()).Returns(38.00m);
 
-            Consumo consumoIsFalamais = new Consumo()
-            {
-                Tempo = 10,
-                IsFaleMais = true,
-                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
-                ObjPrecoLigacao = new PrecoLigacao()
-                {
-                    Valor = 1.90m
-                },
-            };
-
+            //tempo = 20, valor = 1.90.
+            var calculoNaoExcedidoSemFalaMais = 20 * 1.90m;
+           
             // act
-            var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();
-            var resultado = consumoIsFalamais.IsFalaMaisExcedeuConsumo();
+            var resultadoEsperado = mock.Object.CalculoDoConsumo();
+            var resultado = calculoNaoExcedidoSemFalaMais;
 
-            Assert.AreEqual(resultado, resultadoEsperado, "Valor R$ 0,00");
+            Assert.AreEqual(resultado, resultadoEsperado);
         }
 
         [Test]
@@ -165,14 +157,14 @@ namespace FalaMais.Teste
             {
                 Origem = "011",
                 Destino = "016",
-                Valor = 190m
+                Valor = 1.90m
             };
-
+   
             Mock<IPrecoLigacaoServices> mock = new Mock<IPrecoLigacaoServices>();
-            mock.Setup(m => m.BuscarByOrigemDestino("011", "116")).Returns(precoLigacao);
-
-            decimal valorObtido = precoLigacao.Valor;
-            decimal valorEsperado = 190m;
+            mock.Setup(m => m.BuscarByOrigemDestino("011", "016")).Returns(precoLigacao);
+           
+            decimal valorObtido = mock.Object.BuscarByOrigemDestino("011","016").Valor;
+            decimal valorEsperado = 1.90m;
 
             Assert.AreEqual(valorObtido, valorEsperado);
         }

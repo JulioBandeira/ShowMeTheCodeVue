@@ -10,7 +10,10 @@ namespace Modelo.Services.Services
 {
     public class PrecoLigacaoServices : IPrecoLigacaoServices
     {
-       
+        public PrecoLigacaoServices() :base() { 
+        
+        }
+
         public List<PrecoLigacao> ListaPrecosLigacoes()
         {
 
@@ -64,6 +67,8 @@ namespace Modelo.Services.Services
 
         public PrecoLigacao BuscarByOrigemDestino(string origem, string destino)
         {
+            var ee = ListaPrecosLigacoes().FirstOrDefault(x => x.Origem == origem && x.Destino == destino);
+
             return ListaPrecosLigacoes().FirstOrDefault(x=>x.Origem == origem && x.Destino == destino);
         }
     }

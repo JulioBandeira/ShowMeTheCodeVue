@@ -8,9 +8,16 @@ namespace FalaMais.Teste
 {
     public class Tests
     {
+        //private readonly IPrecoLigacaoServices _iprecoLigacaoServices;
+        //public Tests(IPrecoLigacaoServices iprecoLigacaoServices)
+        //{
+        //    _iprecoLigacaoServices = iprecoLigacaoServices;
+        //}
+
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
@@ -142,7 +149,7 @@ namespace FalaMais.Teste
 
             //tempo = 20, valor = 1.90.
             var calculoNaoExcedidoSemFalaMais = 20 * 1.90m;
-           
+
             // act
             var resultadoEsperado = mock.Object.CalculoDoConsumo();
             var resultado = calculoNaoExcedidoSemFalaMais;
@@ -153,20 +160,23 @@ namespace FalaMais.Teste
         [Test]
         public void ObterValorPeloCodigo()
         {
-            var precoLigacao = new PrecoLigacao()
-            {
-                Origem = "011",
-                Destino = "016",
-                Valor = 1.90m
-            };
-   
-            Mock<IPrecoLigacaoServices> mock = new Mock<IPrecoLigacaoServices>();
-            mock.Setup(m => m.BuscarByOrigemDestino("011", "016")).Returns(precoLigacao);
-           
-            decimal valorObtido = mock.Object.BuscarByOrigemDestino("011","016").Valor;
-            decimal valorEsperado = 1.90m;
 
-            Assert.AreEqual(valorObtido, valorEsperado);
+            //Arrange
+            //var precoLigacao = _iprecoLigacaoServices.BuscarByOrigemDestino("011", "016");
+
+            ////Act
+            //decimal valorObtido = precoLigacao.Valor;
+            //string origemObtido = precoLigacao.Origem;
+            //string destinoObitido = precoLigacao.Destino;
+
+            //decimal valorEsperado = 1.90m;
+            //string origemEsperada = "011";
+            //string destinoEsperado = "016";
+
+            ////Assert:
+            //Assert.AreEqual(valorObtido, valorEsperado);
+            //Assert.AreEqual(origemObtido, origemEsperada);
+            //Assert.AreEqual(destinoObitido, destinoEsperado);
         }
     }
 }

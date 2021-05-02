@@ -56,7 +56,7 @@ namespace Modelo.Domain.Entities
         public decimal CalcularConsumoComFalaMais()
         {
             if (IsFalaMaisExcedeuConsumo())
-                return Tempo + ObjPrecoLigacao.Valor;
+                return  RetornaValorExcedidoComFalaMaisComJuros();
 
             return 0.0m;
         }
@@ -67,10 +67,14 @@ namespace Modelo.Domain.Entities
         /// <returns></returns>
         public decimal CalcularConsumoSemFalaMais()
         {
-            if (IsFalaMaisExcedeuConsumo())
-                return (Tempo) * (ObjPrecoLigacao.Valor +  (ObjPrecoLigacao.Valor * 0.1m));
-
             return Tempo * ObjPrecoLigacao.Valor;
+        }
+
+        private decimal RetornaValorExcedidoComFalaMaisComJuros() {
+
+            var calculo = (Tempo - Convert.ToInt32(PlanoFaleMaisEnum)) * (ObjPrecoLigacao.Valor * 1.1m);
+
+            return calculo;
         }
     }
 }

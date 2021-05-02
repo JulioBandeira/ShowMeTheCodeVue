@@ -25,7 +25,7 @@ namespace Modelo.Services.Services
             {
                 IsFaleMais = isfalamais,
                 Tempo = tempo,
-                PlanoFaleMaisEnum = Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
+                PlanoFaleMaisEnum = Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais120,
                 ObjPrecoLigacao = precoLIgacao,
             };
 

@@ -65,7 +65,7 @@ namespace Modelo.Services.Services
             return listaPrecoLigacao;
         }
 
-        public PrecoLigacao BuscarByOrigemDestino(string origem, string destino)
+        public PrecoLigacao BuscarPrecoLigacaoPeloOrigemDestino(string origem, string destino)
         {
             return ListaPrecosLigacoes().FirstOrDefault(x=>x.Origem == origem && x.Destino == destino);
         }
@@ -78,20 +78,6 @@ namespace Modelo.Services.Services
         public List<string> RetornaDestinos(string origem)
         {
             return ListaPrecosLigacoes().Where(x=>x.Origem == origem).Select(x => x.Destino).Distinct().OrderBy(x => x).ToList();
-        }
-
-        public decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo)
-        {
-            var precoLIgacao = ListaPrecosLigacoes().FirstOrDefault(x => x.Origem == origem && x.Destino == destino);
-
-            var consumo = new Consumo
-            {
-                IsFaleMais = isfalamais,
-                PlanoFaleMaisEnum = Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
-                ObjPrecoLigacao = precoLIgacao,
-            };
-
-            return consumo.CalculoDoConsumo();
         }
     }
 }

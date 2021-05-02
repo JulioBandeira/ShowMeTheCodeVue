@@ -27,7 +27,7 @@ namespace FalaMais.Aplicacao
         {
             services.AddControllersWithViews();
             services.AddSingleton<IPrecoLigacaoServices, PrecoLigacaoServices>();
-
+            services.AddSingleton<IConsumoServices, ConsumoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -14,10 +14,12 @@ namespace FalaMais.Aplicacao.Controllers
     public class ApiFalaMaisController : ControllerBase
     {
         private readonly IPrecoLigacaoServices _iprecoLigacaoServices;
+        private readonly IConsumoServices _consumoServices;
 
-        public ApiFalaMaisController(IPrecoLigacaoServices iprecoLigacaoServices)
+        public ApiFalaMaisController(IPrecoLigacaoServices iprecoLigacaoServices, IConsumoServices consumoServices)
         {
             _iprecoLigacaoServices = iprecoLigacaoServices;
+            _consumoServices = consumoServices;
         }
 
         // GET: api/<ApiFalaMaisController>
@@ -36,9 +38,9 @@ namespace FalaMais.Aplicacao.Controllers
 
         // GET api/<ApiFalaMaisController>/5
         [HttpGet("/api/falamais/obter/consumo")]
-        public string Get(bool is_fala_mais, string origem, string destino, int tempo)
+        public decimal Get(bool isfalamais, string origem, string destino, int tempo)
         {
-            return "value";
+            return _consumoServices.CalcularConsumo(isfalamais, origem, destino, tempo);
         }
 
         // POST api/<ApiFalaMaisController>

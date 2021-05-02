@@ -68,7 +68,7 @@ namespace Modelo.Domain.Entities
         public decimal CalcularConsumoSemFalaMais()
         {
             if (IsFalaMaisExcedeuConsumo())
-                return (Tempo - Convert.ToInt32(PlanoFaleMaisEnum)) * (ObjPrecoLigacao.Valor * 0.1m);
+                return (Tempo) * (ObjPrecoLigacao.Valor +  (ObjPrecoLigacao.Valor * 0.1m));
 
             return Tempo * ObjPrecoLigacao.Valor;
         }

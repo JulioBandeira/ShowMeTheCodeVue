@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Modelo.Domain.Entities;
 using Modelo.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,13 @@ namespace FalaMais.Aplicacao.Controllers
         public decimal Get(bool isfalamais, string origem, string destino, int tempo)
         {
             return _consumoServices.CalcularConsumo(isfalamais, origem, destino, tempo);
+        }
+
+        // GET api/<ApiFalaMaisController>/5
+        [HttpGet("/api/falamais/obter/preco")]
+        public PrecoLigacao Get(string origem, string destino)
+        {
+            return _iprecoLigacaoServices.BuscarPrecoLigacaoPeloOrigemDestino(origem,destino);
         }
 
         // POST api/<ApiFalaMaisController>

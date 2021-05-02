@@ -26,9 +26,11 @@ new Vue({
                 return this.returnCalculoConsumo();
         },
         origem() {
+            this.returnPreco();
             return this.returnCalculoConsumo();
         },
         destino() {
+            this.returnPreco();
             return this.returnCalculoConsumo();
         },
     },
@@ -54,6 +56,22 @@ new Vue({
                 .then(resp => {
 
                     this.options_destino = resp.data;
+                })
+                .catch(error => {
+                    alert('error')
+                })
+        },
+        returnPreco() {
+
+            axios.get('/api/falamais/obter/preco', {
+                params: {
+                    origem: this.origem,
+                    destino: this.destino
+                }
+            })
+                .then(resp => {
+
+                    this.preco = resp.data.valor;
                 })
                 .catch(error => {
                     alert('error')

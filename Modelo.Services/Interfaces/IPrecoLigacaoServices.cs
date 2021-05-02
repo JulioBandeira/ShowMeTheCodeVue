@@ -15,6 +15,8 @@ namespace Modelo.Services.Interfaces
 
         List<string> RetornaDestinos(string origem);
 
+        decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo);
+
         PrecoLigacao BuscarByOrigemDestino(string origem, string destino);
     }
 }

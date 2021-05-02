@@ -35,8 +35,8 @@ namespace FalaMais.Aplicacao.Controllers
         }
 
         // GET api/<ApiFalaMaisController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("/api/falamais/obter/consumo")]
+        public string Get(bool is_fala_mais, string origem, string destino, int tempo)
         {
             return "value";
         }

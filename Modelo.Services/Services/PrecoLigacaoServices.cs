@@ -79,5 +79,19 @@ namespace Modelo.Services.Services
         {
             return ListaPrecosLigacoes().Where(x=>x.Origem == origem).Select(x => x.Destino).Distinct().OrderBy(x => x).ToList();
         }
+
+        public decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo)
+        {
+            var precoLIgacao = ListaPrecosLigacoes().FirstOrDefault(x => x.Origem == origem && x.Destino == destino);
+
+            var consumo = new Consumo
+            {
+                IsFaleMais = isfalamais,
+                PlanoFaleMaisEnum = Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
+                ObjPrecoLigacao = precoLIgacao,
+            };
+
+            return consumo.CalculoDoConsumo();
+        }
     }
 }

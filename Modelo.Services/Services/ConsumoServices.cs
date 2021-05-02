@@ -17,7 +17,7 @@ namespace Modelo.Services.Services
             _precoLigacaoServices = precoLigacaoServices;
         }
 
-        public decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo)
+        public decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo, string plano)
         {
             var precoLIgacao = _precoLigacaoServices.BuscarPrecoLigacaoPeloOrigemDestino(origem, destino);
 
@@ -25,7 +25,7 @@ namespace Modelo.Services.Services
             {
                 IsFaleMais = isfalamais,
                 Tempo = tempo,
-                PlanoFaleMaisEnum = Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais120,
+                PlanoFaleMaisEnum = (Domain.Enums.EnumPlanoFaleMais)Enum.Parse(typeof(Domain.Enums.EnumPlanoFaleMais), plano),
                 ObjPrecoLigacao = precoLIgacao,
             };
 

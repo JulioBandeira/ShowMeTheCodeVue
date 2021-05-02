@@ -8,6 +8,6 @@ namespace Modelo.Services.Interfaces
 {
     public interface IConsumoServices
     {
-        decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo);
+        decimal CalcularConsumo(bool isfalamais, string origem, string destino, int tempo, string plano);
     }
 }

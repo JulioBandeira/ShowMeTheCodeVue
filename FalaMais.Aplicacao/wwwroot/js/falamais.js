@@ -6,6 +6,7 @@ new Vue({
             preco: 0,
             tempo: '',
             is_fala_mais: '1',
+            plano:'30',
             origem: '011',
             destino : '',
             options: [
@@ -21,6 +22,9 @@ new Vue({
         tempo() {
             if (this.tempo > 0) 
                 return this.returnCalculoConsumo();
+        },
+        plano() {
+             this.returnCalculoConsumo();
         },
         is_fala_mais() {
                 return this.returnCalculoConsumo();
@@ -89,6 +93,7 @@ new Vue({
                     origem: this.origem,
                     destino: this.destino,
                     tempo: this.tempo,
+                    plano: this.plano,
                 }
             }).then(resp => {
 

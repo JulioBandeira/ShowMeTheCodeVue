@@ -39,9 +39,9 @@ namespace FalaMais.Aplicacao.Controllers
 
         // GET api/<ApiFalaMaisController>/5
         [HttpGet("/api/falamais/obter/consumo")]
-        public decimal Get(bool isfalamais, string origem, string destino, int tempo)
+        public decimal Get(bool isfalamais, string origem, string destino, int tempo, string plano)
         {
-            return _consumoServices.CalcularConsumo(isfalamais, origem, destino, tempo);
+            return _consumoServices.CalcularConsumo(isfalamais, origem, destino, tempo, plano);
         }
 
         // GET api/<ApiFalaMaisController>/5

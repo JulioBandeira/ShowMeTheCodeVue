@@ -102,6 +102,7 @@ new Vue({
         }
     },
     created() {
-        this.returnOrigens()
+        this.returnOrigens();
+        this.returnDestino();
     }
 })

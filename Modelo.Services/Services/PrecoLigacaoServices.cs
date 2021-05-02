@@ -67,9 +67,17 @@ namespace Modelo.Services.Services
 
         public PrecoLigacao BuscarByOrigemDestino(string origem, string destino)
         {
-            var ee = ListaPrecosLigacoes().FirstOrDefault(x => x.Origem == origem && x.Destino == destino);
-
             return ListaPrecosLigacoes().FirstOrDefault(x=>x.Origem == origem && x.Destino == destino);
+        }
+
+        public List<string> RetornaOrigens()
+        {
+            return ListaPrecosLigacoes().Select(x => x.Destino).Distinct().OrderBy(x => x).ToList();
+        }
+
+        public List<string> RetornaDestinos(string origem)
+        {
+            return ListaPrecosLigacoes().Where(x=>x.Origem == origem).Select(x => x.Destino).Distinct().OrderBy(x => x).ToList();
         }
     }
 }

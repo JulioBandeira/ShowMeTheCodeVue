@@ -7,8 +7,12 @@ new Vue({
             preco: 0,
             tempo: '',
             is_fala_mais: '1',
+            origem: '011',
+            destino : '',
             options: [
-            ]
+            ],
+            options_destino: [
+            ],
         }
     },
     computed: {
@@ -18,7 +22,8 @@ new Vue({
         }
     },
     methods: {
-        getAccounts() {
+        returnOrigens() {
+
             axios.get('/api/falamais/origens')
                 .then(resp => {
 
@@ -28,10 +33,27 @@ new Vue({
                     alert('error')
                 })
         },
+        returnDestino() {
 
+            axios.get('/api/falamais/destinos', {
+                params: {
+                   origem: this.origem
+                } 
+            })
+                .then(resp => {
+
+                    this.options_destino = resp.data;
+                })
+                .catch(error => {
+                    alert('error')
+                })
+        },
+        eventReturnDestino() {
+            this.returnDestino();
+        }
     },
     created() {
-        this.getAccounts()
+        this.returnOrigens()
     }
 })
 

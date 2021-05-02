@@ -24,7 +24,14 @@ namespace FalaMais.Aplicacao.Controllers
         [HttpGet("/api/falamais/origens")]
         public IEnumerable<string> Get()
         {
-            return _iprecoLigacaoServices.ListaPrecosLigacoes().Select(x => x.Destino).Distinct().OrderBy(x => x);
+            return _iprecoLigacaoServices.RetornaOrigens(); ;
+        }
+
+        // GET: api/<ApiFalaMaisController>
+        [HttpGet("/api/falamais/destinos")]
+        public IEnumerable<string> Get(string origem)
+        {
+            return _iprecoLigacaoServices.RetornaDestinos(origem);
         }
 
         // GET api/<ApiFalaMaisController>/5

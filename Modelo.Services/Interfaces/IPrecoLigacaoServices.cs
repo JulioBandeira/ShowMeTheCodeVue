@@ -11,6 +11,10 @@ namespace Modelo.Services.Interfaces
     {
         List<PrecoLigacao> ListaPrecosLigacoes();
 
+        List<string> RetornaOrigens();
+
+        List<string> RetornaDestinos(string origem);
+
         PrecoLigacao BuscarByOrigemDestino(string origem, string destino);
     }
 }

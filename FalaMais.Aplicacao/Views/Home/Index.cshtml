@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Origem</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="" v-model="origem" v-on:change="eventReturnDestino">
                 <option v-for="option in options" v-bind:value="option">
                     {{ option }}
                 </option>
@@ -23,9 +23,9 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect2">Destino</label>
-            <select class="form-control" id="exampleFormControlSelect2">
-                <option v-for="option in options" v-bind:value="option">
-                    {{ option }}
+            <select class="form-control" id="" v-model="destino">
+                <option v-for="option_destino in options_destino" v-bind:value="option_destino">
+                    {{ option_destino }}
                 </option>
             </select>
         </div>

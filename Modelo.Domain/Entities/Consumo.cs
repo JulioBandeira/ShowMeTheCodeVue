@@ -70,7 +70,7 @@ namespace Modelo.Domain.Entities
             return Tempo * ObjPrecoLigacao.Valor;
         }
 
-        private decimal RetornaValorExcedidoComFalaMaisComJuros() {
+        private dValorExcedidoComFalaMaisComJuros() {
 
             var calculo = (Tempo - Convert.ToInt32(PlanoFaleMaisEnum)) * (ObjPrecoLigacao.Valor * 1.1m);
 

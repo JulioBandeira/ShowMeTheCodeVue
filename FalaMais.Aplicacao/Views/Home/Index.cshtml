@@ -6,7 +6,7 @@
     <h1 class="display-4">Calcula o Valor do Consumo</h1>
     <form>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Plano Fala Mais?</label>
+            <label for="">Plano Fala Mais?</label>
             <select class="form-control" v-model="is_fala_mais">
                 <option value="1">Sim</option>
                 <option value="0">Não</option>
@@ -14,7 +14,7 @@
         </div>
         <div v-if="is_fala_mais === '1'">
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Escolha o Plano</label>
+                <label for="">Escolha o Plano</label>
                 <select class="form-control" v-model="plano">
                     <option value="30">Fala Mais 30</option>
                     <option value="60">Fala Mais 60</option>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Origem</label>
+            <label for="">Origem</label>
             <select class="form-control" id="" v-model="origem" v-on:change="eventReturnDestino">
                 <option v-for="option in options" v-bind:value="option">
                     {{ option }}
@@ -31,7 +31,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect2">Destino</label>
+            <label for="">Destino</label>
             <select class="form-control" id="" v-model="destino">
                 <option v-for="option_destino in options_destino" v-bind:value="option_destino">
                     {{ option_destino }}
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Tempo</label>
-            <input class="form-control" id="exampleFormControlTextarea1" v-model="tempo" rows="3">
+            <input class="form-control" id="" v-model="tempo">
         </div>
         <div v-if="is_fala_mais === '1'">
             <h1 class="display-4">Com Fala Mais</h1>

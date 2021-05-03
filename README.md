@@ -1,11 +1,7 @@
 # ShowMeTheCodeVortex
 > Descrição curta sobre o que seu projeto faz.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+Aplicação para simular o consumo do tempo de ligação da origem e destino das localidade do DDD.
 
 ![](../header.png)
 

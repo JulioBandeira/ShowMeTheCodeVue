@@ -21,12 +21,12 @@ namespace FalaMais.Teste
         }
 
         [Test]
-        public void IsFalaMaisExcedeuPlano30()
+        public void IsFalaMaisExcedeuPlano()
         {
             // arrange
-            Consumo consumoIsExcedeu65 = new Consumo()
+            Consumo consumoIsExcedeu30 = new Consumo()
             {
-                Tempo = 65,
+                Tempo = 31,
                 IsFaleMais = true,
                 PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
                 ObjPrecoLigacao = new PrecoLigacao()
@@ -35,16 +35,52 @@ namespace FalaMais.Teste
                 },
             };
 
-            Mock<IConsumo> mock = new Mock<IConsumo>();
-            mock.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
+            Consumo consumoIsExcedeu60 = new Consumo()
+            {
+                Tempo = 61,
+                IsFaleMais = true,
+                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais60,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.90m
+                },
+            };
+
+            Consumo consumoIsExcedeu120 = new Consumo()
+            {
+                Tempo = 121,
+                IsFaleMais = true,
+                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais120,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.90m
+                },
+            };
+
+            Mock<IConsumo> mock30 = new Mock<IConsumo>();
+            mock30.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
+
+            Mock<IConsumo> mock60 = new Mock<IConsumo>();
+            mock60.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
+
+            Mock<IConsumo> mock120 = new Mock<IConsumo>();
+            mock120.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
 
             // act
-            var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();
-            var resultado = consumoIsExcedeu65.IsFalaMaisExcedeuConsumo();
+            var resultadoEsperado30 = mock30.Object.IsFalaMaisExcedeuConsumo();
+            var resultadoObtido30 = consumoIsExcedeu30.IsFalaMaisExcedeuConsumo();
 
-            Assert.AreEqual(resultado, resultadoEsperado);
+            var resultadoEsperado60 = mock60.Object.IsFalaMaisExcedeuConsumo();
+            var resultadoObtido60= consumoIsExcedeu60.IsFalaMaisExcedeuConsumo();
+
+            var resultadoEsperado120 = mock120.Object.IsFalaMaisExcedeuConsumo();
+            var resultadoObtido120 = consumoIsExcedeu120.IsFalaMaisExcedeuConsumo();
+
+            // asst
+            Assert.IsTrue(resultadoObtido30 == resultadoEsperado30);
+            Assert.IsTrue(resultadoObtido60 == resultadoEsperado60);
+            Assert.IsTrue(resultadoObtido120 == resultadoEsperado120);
         }
-
 
         [Test]
         public void IsFalaMaisNaoExcedeuConsumo()

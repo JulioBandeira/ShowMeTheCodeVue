@@ -21,5 +21,16 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
+    - name: Testando Fala Mais
       run: dotnet test --no-build --verbosity normal
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: dotnet publish
+      run: |
+        dotnet publish -c Release -o FalaMais.Aplicacao
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v1
+      with: 
+        app-name: FalaMais.Aplicacao # Replace with your app name
+        publish-profile: $ # Define secret variable in repository settings as per action documentation
+        package: './dotnetcorewebapp'    

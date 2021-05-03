@@ -7,13 +7,17 @@ Aplicação para simular o consumo do tempo de ligação da origem e destino das
 CLI do .NET Core:
 
 ```dotnet 
-dotnet run
+ cd .\FalaMais.Aplicacao\
+ dotnet run 
 ```
+Na saída do console exibirá o localhost + porta que se está escutando, exemplo: Now listening on: https://localhost:5001.
 
 ## Teste
 
 CLI do .NET Core:
 
 ```dotnet 
-dotnet Teste
+cd .\FalaMais.Teste\
+dotnet test
 ```
+Na saída do console exibirá os testes unitários.

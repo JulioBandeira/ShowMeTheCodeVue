@@ -262,25 +262,58 @@ namespace FalaMais.Teste
         public void ObterResultadoValorSemPlanoFaleMais()
         {
             // arrange
-            Consumo consumoSemFalaMais = new Consumo()
+            Consumo consumoSemFalaMais20 = new Consumo()
             {
                 Tempo = 20,
-                IsFaleMais = false,
-                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
+                IsFaleMais = false,      
                 ObjPrecoLigacao = new PrecoLigacao()
                 {
                     Valor = 1.90m
                 },
             };
 
-            Mock<IConsumo> mock = new Mock<IConsumo>();
-            mock.Setup(m => m.CalculoDoConsumo()).Returns(38.00m);
+            Consumo consumoSemFalaMais80 = new Consumo()
+            {
+                Tempo = 80,
+                IsFaleMais = false,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.70m
+                },
+            };
+
+            Consumo consumoSemFalaMais200 = new Consumo()
+            {
+                Tempo = 200,
+                IsFaleMais = false,
+                ObjPrecoLigacao = new PrecoLigacao()
+                {
+                    Valor = 1.90m
+                },
+            };
+
+            Mock<IConsumo> mock20 = new Mock<IConsumo>();
+            mock20.Setup(m => m.CalculoDoConsumo()).Returns(38.00m);
+
+            Mock<IConsumo> mock80 = new Mock<IConsumo>();
+            mock80.Setup(m => m.CalculoDoConsumo()).Returns(136.00m);
+
+            Mock<IConsumo> mock200 = new Mock<IConsumo>();
+            mock200.Setup(m => m.CalculoDoConsumo()).Returns(380.00m);
 
             // act
-            var resultadoEsperado = mock.Object.CalculoDoConsumo();
-            var resultadoObitido = consumoSemFalaMais.CalculoDoConsumo();
+            var resultadoEsperado20 = mock20.Object.CalculoDoConsumo();
+            var resultadoObitido20 = consumoSemFalaMais20.CalculoDoConsumo();
 
-            Assert.AreEqual(resultadoObitido, resultadoEsperado);
+            var resultadoEsperado80 = mock80.Object.CalculoDoConsumo();
+            var resultadoObitido80 = consumoSemFalaMais80.CalculoDoConsumo();
+
+            var resultadoEsperado200 = mock200.Object.CalculoDoConsumo();
+            var resultadoObitido200 = consumoSemFalaMais200.CalculoDoConsumo();
+
+            Assert.IsTrue(resultadoEsperado20 == resultadoObitido20);
+            Assert.IsTrue(resultadoEsperado80 == resultadoObitido80);
+            Assert.IsTrue(resultadoEsperado200 == resultadoObitido200);
         }
     }
 }

@@ -7,7 +7,8 @@ Aplicação para simular o consumo do tempo de ligação da origem e destino das
 CLI do .NET Core:
 
 ```dotnet 
-dotnet run
+ cd .\FalaMais.Aplicacao\
+ dotnet run 
 ```
 
 ## Teste
@@ -15,5 +16,6 @@ dotnet run
 CLI do .NET Core:
 
 ```dotnet 
-dotnet Teste
+cd .\FalaMais.Teste\
+dotnet test
 ```

@@ -20,4 +20,4 @@ CLI do .NET Core:
 cd .\FalaMais.Teste\
 dotnet test
 ```
-Na saída do console exibirá os teste unitários.
+Na saída do console exibirá dos testes unitários.

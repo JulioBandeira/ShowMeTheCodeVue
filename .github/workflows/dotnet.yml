@@ -22,9 +22,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Testando Fala Mais
-      run: dotnet test --no-build --verbosity normal
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-    - name: dotnet publish
-      run: |
-        dotnet publish -c Release -o FalaMais.Aplicacao    
+      run: dotnet test --no-build --verbosity normal  

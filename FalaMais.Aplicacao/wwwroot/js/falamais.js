@@ -3,8 +3,8 @@ new Vue({
     el: '#app',
     data() {
         return {
-            preco: 0,
-            tempo: '',
+            preco: (0).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+            tempo: 0,
             is_fala_mais: '1',
             plano:'30',
             origem: '011',
@@ -13,29 +13,28 @@ new Vue({
             ],
             options_destino: [
             ],
-            valor: 0,
-            resultado:'',
+            valor: (0).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+            resultado: (0).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
         }
     },
-  
     watch : {
         tempo() {
             if (this.tempo > 0) 
-                return this.returnCalculoConsumo();
+                this.returnCalculoConsumo();
         },
         plano() {
              this.returnCalculoConsumo();
         },
         is_fala_mais() {
-                return this.returnCalculoConsumo();
+                this.returnCalculoConsumo();
         },
         origem() {
             this.returnPreco();
-            return this.returnCalculoConsumo();
+            this.returnCalculoConsumo();
         },
         destino() {
             this.returnPreco();
-            return this.returnCalculoConsumo();
+            this.returnCalculoConsumo();
         },
     },
     methods: {
@@ -74,8 +73,11 @@ new Vue({
                 }
             })
                 .then(resp => {
-
-                    this.preco = resp.data.valor;
+              
+                    if (resp.data.valor != undefined) 
+                        this.preco = resp.data.valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                    else
+                        this.preco = (0).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
                 })
                 .catch(error => {
                     alert('error')
@@ -97,7 +99,7 @@ new Vue({
                 }
             }).then(resp => {
 
-                this.resultado = resp.data;
+                this.resultado = resp.data.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
             });
         }
     },

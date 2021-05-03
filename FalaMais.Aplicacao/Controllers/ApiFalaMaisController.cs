@@ -27,7 +27,7 @@ namespace FalaMais.Aplicacao.Controllers
         [HttpGet("/api/falamais/origens")]
         public IEnumerable<string> Get()
         {
-            return _iprecoLigacaoServices.RetornaOrigens(); ;
+            return _iprecoLigacaoServices.RetornaOrigens();
         }
 
         // GET: api/<ApiFalaMaisController>
@@ -50,23 +50,6 @@ namespace FalaMais.Aplicacao.Controllers
         {
             return _iprecoLigacaoServices.BuscarPrecoLigacaoPeloOrigemDestino(origem,destino);
         }
-
-        // POST api/<ApiFalaMaisController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ApiFalaMaisController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ApiFalaMaisController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

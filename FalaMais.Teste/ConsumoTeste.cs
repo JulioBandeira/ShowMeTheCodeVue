@@ -24,20 +24,6 @@ namespace FalaMais.Teste
         public void IsFalaMaisExcedeuPlano30()
         {
             // arrange
-            Consumo consumoIsFalaMais35 = new Consumo()
-            {
-                Tempo = 35,
-                IsFaleMais = true,
-                PlanoFaleMaisEnum = Modelo.Domain.Enums.EnumPlanoFaleMais.PlanoFalaMais30,
-                ObjPrecoLigacao = new PrecoLigacao()
-                {
-                    Valor = 1.90m
-                },
-            };
-
-            Mock<IConsumo> mock = new Mock<IConsumo>();
-            mock.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
-
             Consumo consumoIsExcedeu65 = new Consumo()
             {
                 Tempo = 65,
@@ -48,6 +34,9 @@ namespace FalaMais.Teste
                     Valor = 1.90m
                 },
             };
+
+            Mock<IConsumo> mock = new Mock<IConsumo>();
+            mock.Setup(m => m.IsFalaMaisExcedeuConsumo()).Returns(true);
 
             // act
             var resultadoEsperado = mock.Object.IsFalaMaisExcedeuConsumo();

@@ -64,7 +64,7 @@ namespace FalaMais.Teste
             var resultadoObtido30 = consumoIsExcedeu30.IsFalaMaisExcedeuConsumo();
 
             var resultadoEsperado60 = mock60.Object.IsFalaMaisExcedeuConsumo();
-            var resultadoObtido60= consumoIsExcedeu60.IsFalaMaisExcedeuConsumo();
+            var resultadoObtido60 = consumoIsExcedeu60.IsFalaMaisExcedeuConsumo();
 
             var resultadoEsperado120 = mock120.Object.IsFalaMaisExcedeuConsumo();
             var resultadoObtido120 = consumoIsExcedeu120.IsFalaMaisExcedeuConsumo();
@@ -265,7 +265,7 @@ namespace FalaMais.Teste
             Consumo consumoSemFalaMais20 = new Consumo()
             {
                 Tempo = 20,
-                IsFaleMais = false,      
+                IsFaleMais = false,
                 ObjPrecoLigacao = new PrecoLigacao()
                 {
                     Valor = 1.90m

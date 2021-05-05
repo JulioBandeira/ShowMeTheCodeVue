@@ -2,8 +2,9 @@
     ViewData["Title"] = "Fala Mais";
 }
 
-<div class="text-center" id="app">
-    <h1 class="display-4">Calcula o Valor do Consumo</h1>
+
+<div class="text-center col-sm-6 offset-sm-3" id="app">
+    <h5 class="">Calcula o Valor do Consumo</h5>
     <form>
         <div class="form-group">
             <label for="">Plano Fala Mais?</label>
@@ -43,14 +44,14 @@
             <input class="form-control" id="" min="0" type="number" v-model="tempo">
         </div>
         <div v-if="is_fala_mais === '1'">
-            <h1 class="display-4">Com Fala Mais Até {{plano}} Minutos</h1>
-            <h1 class="display-4">O valor origem e destino: {{preco}}</h1>
-            <h1 class="display-4">Valor da Simulação: {{resultado}}</h1>
+            <h4 class="">Com Fala Mais Até {{plano}} Minutos</h4>
+            <h4 class="">O Valor Origem e Destino: {{preco}}</h4>
+            <h4 class="">Valor da Simulação: {{resultado}}</h4>
         </div>
         <div v-if="is_fala_mais === '0'">
-            <h1 class="display-4">Sem Fala Mais</h1>
-            <h1 class="display-4">O valor origem e destino: {{preco}}</h1>
-            <h1 class="display-4">Valor da Simulação: {{resultado}} </h1>
+            <h4 class="">Sem Fala Mais</h4>
+            <h4 class="">O Valor Origem e Destino: {{preco}}</h4>
+            <h4 class="">Valor da Simulação: {{resultado}} </h4>
         </div>
     </form>
 </div>

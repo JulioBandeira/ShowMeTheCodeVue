@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Fala Mais";
 }
 
 <div class="text-center" id="app">
@@ -40,10 +40,10 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Tempo</label>
-            <input class="form-control" id="" v-model="tempo">
+            <input class="form-control" id="" min="0" type="number" v-model="tempo">
         </div>
         <div v-if="is_fala_mais === '1'">
-            <h1 class="display-4">Com Fala Mais</h1>
+            <h1 class="display-4">Com Fala Mais Até {{plano}} Minutos</h1>
             <h1 class="display-4">O valor origem e destino: {{preco}}</h1>
             <h1 class="display-4">Valor da Simulação: {{resultado}}</h1>
         </div>

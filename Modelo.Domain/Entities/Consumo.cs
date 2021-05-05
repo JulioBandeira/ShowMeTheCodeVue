@@ -1,12 +1,11 @@
 ﻿using Modelo.Domain.Enums;
-using Modelo.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Modelo.Domain.Entities
 {
-    public class Consumo : IConsumo
+    public class Consumo 
     {
         public PrecoLigacao ObjPrecoLigacao { get; set; }
 
